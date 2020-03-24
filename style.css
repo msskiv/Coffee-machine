@@ -1,0 +1,40 @@
+.coffee-machine {
+  border: 3px solid black;
+  margin-top: 100px;
+}
+
+.coffee-list {
+  background-image: url("img/background.jpg");
+  background-size: cover;
+  
+}
+.coffee-item {
+  background: rgba(0,0,0,0.7);
+  margin: 10px 0; /*отступ на 10 сверху и снизу и 0 по бокам*/
+  border-radius: 5%;
+  cursor: pointer; /*при наведении на объект будет видоизменяться курсор*/
+}
+.coffee-item span {
+  color: white; /*цвет текста*/
+  margin-left: 25px; /*отстутп слева*/
+}
+.coffee-item img {
+  height: 75px;
+  background: white;
+  border-radius: 33%;
+  margin-left: -15px; 
+}
+
+.coffee-item:hover { /*псеводкласс для "подсветки" объекта*/
+  background: rgba(50,50,50,0.7); /*"подсветка" объекта*/
+}
+
+.coffee-oper {
+  background: lightgrey;
+}
+.display {
+  background: green;
+  border: 2px solid darkgreen;
+  padding: 10px;/*внутренний отступ*/
+}
+

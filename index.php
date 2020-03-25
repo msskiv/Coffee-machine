@@ -16,19 +16,19 @@
       <div class="row coffee-machine">
         <div class="col-6 coffee-list">
           <div class="row flex-column p-3 h-100 justify-content-around"> <!--p-3 это padding: 3px;--> 
-            <div class="coffee-item col">
+            <div class="coffee-item col" onclick="buyCoffee('Американо', 50)">
               <img src="img/americano.png" alt="">
               <span>Американо - 50 руб.</span>
             </div>
-            <div class="coffee-item col">
+            <div class="coffee-item col" onclick="buyCoffee('Капучино', 78)">
               <img src="img/cappuccino.png" alt="">
               <span>Капучино - 78 руб.</span>
             </div>
-            <div class="coffee-item col">
+            <div class="coffee-item col" onclick="buyCoffee('Эспрессо', 63)">
               <img src="img/espresso.png" alt="">
               <span>Эспрессо - 63 руб.</span>
             </div>
-            <div class="coffee-item col">
+            <div class="coffee-item col" onclick="buyCoffee('Латте', 73)">
               <img src="img/latte_1.png" alt="">
               <span>Латте - 73 руб.</span>
             </div>
@@ -50,7 +50,7 @@
             </div>
             <div class="col-6">
               <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Баланс">
+                <input type="text" class="form-control balance" placeholder="Баланс">
                 <div class="input-group-append">
                   <span class="input-group-text" id="basic-addon2"><img src="img/rub-002.png" alt="РУБ"></span>
                 </div>
@@ -68,6 +68,7 @@
     <a href="http://msskiv.beget.tech">Назад</a>
 
     <!-- Optional JavaScript -->
+    <script src= "script.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

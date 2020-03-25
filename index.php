@@ -15,7 +15,7 @@
     <div class="container"><!--для быстрой записи div.container и нажать tab -->
       <div class="row coffee-machine">
         <div class="col-6 coffee-list">
-          <div class="row flex-column p-3"> <!--p-3 это padding: 3px;--> 
+          <div class="row flex-column p-3 h-100 justify-content-around"> <!--p-3 это padding: 3px;--> 
             <div class="coffee-item col">
               <img src="img/americano.png" alt="">
               <span>Американо - 50 руб.</span>
@@ -44,8 +44,23 @@
   
                   </div>
               </div>
+              <div class="coffee-cup">
+                <img src="img/latte_1.png" alt="">
+              </div>
             </div>
-            <div class="col-6"></div>
+            <div class="col-6">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Баланс">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="basic-addon2"><img src="img/rub-002.png" alt="РУБ"></span>
+                </div>
+              </div>
+              <div class="atm">
+                <img src="img/bill_acc.png" alt="">
+              </div>
+              <button class="btn btn-primary btn-block mt-2">Сдача</button>
+              <div class="change-box"></div>
+            </div>
           </div>
         </div>
       </div>

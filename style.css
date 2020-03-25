@@ -9,6 +9,7 @@
   
 }
 .coffee-item {
+  max-height: 75px;
   background: rgba(0,0,0,0.7);
   margin: 10px 0; /*отступ на 10 сверху и снизу и 0 по бокам*/
   border-radius: 5%;
@@ -20,8 +21,8 @@
 }
 .coffee-item img {
   height: 75px;
-  background: white;
-  border-radius: 33%;
+ /* background: white;
+  border-radius: 33%; это фон кружки*/ 
   margin-left: -15px; 
 }
 
@@ -36,5 +37,19 @@
   background: green;
   border: 2px solid darkgreen;
   padding: 10px;/*внутренний отступ*/
+  margin-bottom: 30px; /*внешний отступ снизу*/
 }
 
+.coffee-cup img {
+  width: 100%; /*без этого условия изображение растягивает область в которой находится*/
+  
+}
+.atm img{
+  width: 100%;
+}
+.change-box {
+  background: grey;
+  border: 3px solid black;
+  height: 100px;
+  margin-top: 10px;
+}

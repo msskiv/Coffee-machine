@@ -16,19 +16,19 @@
       <div class="row coffee-machine">
         <div class="col-6 coffee-list">
           <div class="row flex-column p-3 h-100 justify-content-around"> <!--p-3 это padding: 3px;--> 
-            <div class="coffee-item col" onclick="buyCoffee('Американо', 50)">
+            <div class="coffee-item col" onclick="buyCoffee('Американо', 50, this)">
               <img src="img/americano.png" alt="">
               <span>Американо - 50 руб.</span>
             </div>
-            <div class="coffee-item col" onclick="buyCoffee('Капучино', 78)">
+            <div class="coffee-item col" onclick="buyCoffee('Капучино', 78, this)">
               <img src="img/cappuccino.png" alt="">
               <span>Капучино - 78 руб.</span>
             </div>
-            <div class="coffee-item col" onclick="buyCoffee('Эспрессо', 63)">
+            <div class="coffee-item col" onclick="buyCoffee('Эспрессо', 63, this)">
               <img src="img/espresso.png" alt="">
               <span>Эспрессо - 63 руб.</span>
             </div>
-            <div class="coffee-item col" onclick="buyCoffee('Латте', 73)">
+            <div class="coffee-item col" onclick="buyCoffee('Латте', 73, this)">
               <img src="img/latte_1.png" alt="">
               <span>Латте - 73 руб.</span>
             </div>
@@ -38,14 +38,14 @@
           <div class="row p-3">
             <div class="col-6">
               <div class="display">
-                <p class="text">Выберите кофе</p>
+                <p class="display-text">Выберите кофе</p>
                   <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
   
                   </div>
               </div>
               <div class="coffee-cup">
-                <img src="img/latte_1.png" alt="">
+                <img class="d-none" src="img/latte_1.png" alt="">
               </div>
             </div>
             <div class="col-6">

@@ -3,8 +3,12 @@ let balance = document.querySelector(".balance");
 let displayText = document.querySelector(".display-text");
 let progressBar = document.querySelector(".progress-bar");
 let coffeeCup = document.querySelector(".coffee-cup img");
+let display = document.querySelector(".display");
 
 let coffeeStatus = "waiting"; // "cooking" "ready"
+coffeeCup.onclick = takeCoffee;// когда нужно вызвать событие, у функции не пишутся скобки. в противном случае функция будет вызвана сразу, без ожидания события.
+//coffeeCup.onclick = function(){ takeCoffee(this)}//эта запись позволяет использовать параметры функции.
+//coffeeCup.addEventListener("click", takeCoffee, parameter 1, parameter 2);//можно на одно событие повесить сколько угодно событий, повторив эту запись необходимое количество раз.coffeeCup.addEventListener("click", takeCoffee, "Американо", 50);
 
 
 function buyCoffee(name, cost, elem){
@@ -48,10 +52,12 @@ function cookCoffee(name, elem){
     progressBar.style.width = readyPercent + "%";
     coffeeCup.style.opacity = readyPercent + "%";
     if (readyPercent == 100){
-      coffeeStatus = "Ready";
+      coffeeStatus = "ready";
       changeDisplayText("Ваш "+name+" готов");
       coffeeCup.style.cursor = "pointer";
       clearInterval(cookingInterval);
+      progressBar.style.width = "0%";
+      display.style.backgroundColor = "lightgreen";
     }
   }, 100);
 }
@@ -61,6 +67,18 @@ function changeDisplayText(text){
     displayText.innerHTML = "<span>"+text+"</span>"; //возвращает как текст так и код html
 }
 
+function takeCoffee(){
+if (coffeeStatus != "ready"){
+    return;
+  }
+  coffeeStatus = "waiting";
+  coffeeCup.classList.add("d-none");
+  coffeeCup.style.cursor = "auto";
+//  progressBar.style.width = "0%"
+  changeDisplayText("Выберите кофе");
+  display.style.backgroundColor = "green";
+  
+}
 /*описания событий для js
 
 click (щелчек мыши) - onclick 
@@ -90,7 +108,7 @@ alert(balance.value); - возвращает значение по id = balance
 //Изменять стили элементов
 
     elem.style.opacity = "25%";
-    elem.style.border-radius      => elem.style.borderRadius = "50%";
+    elem.style.border-radius      => elem.style.borderRadius = "50%"; //имеется ввиду что если использовалось тире то автоматически требуется перейти к верблюжьей нотации, т.к. тире не съестся и будет ошибка
 
     //Работа с классами
 

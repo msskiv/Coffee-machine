@@ -79,6 +79,47 @@ if (coffeeStatus != "ready"){
   display.style.backgroundColor = "green";
   
 }
+
+let bills = document.querySelectorAll(".wallet img");
+
+for(let i = 0; i < bills.length; i++){
+  bills[i].onmousedown = takeMoney;
+}
+function takeMoney(event){
+  event.preventDefault();
+  
+  let bill = this;//возвращает элемент
+  let billCost = bill.getAttribute("cost");//возвращает значение атрибута cost
+  console.log(billCost);
+  
+  bill.style.position = "absolute";
+  //let degRand = randomInteger(3, 10);
+  //alert (degRand);
+  bill.style.transform = "rotate(90deg)";
+  
+  let billCoords = bill.getBoundingClientRect();
+  let billWidth = billCoords.width;
+  let billHeight = billCoords.height;
+  //console.log(event);
+  //console.log(event.clientX, event.clientY);
+  bill.style.top = event.clientY - billWidth/2 + "px";
+  bill.style.left = event.clientX - billHeight/2 + "px";
+  
+  window.onmousemove = (event) => {
+  bill.style.top = event.clientY - billWidth/2 + "px";
+  bill.style.left = event.clientX - billHeight/2 + "px";
+  };
+  
+  
+  bill.onmouseup = dropMoney;
+}
+
+function dropMoney(){
+  window.onmousemove = null;
+}
+
+
+
 /*описания событий для js
 
 click (щелчек мыши) - onclick 
@@ -145,5 +186,7 @@ alert(balance.value); - возвращает значение по id = balance
     //querySelector
 
     let childElem = elem.querySelector(".childElem");
+
+
 
 */

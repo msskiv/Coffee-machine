@@ -65,6 +65,11 @@
         </div>
       </div>
     </div>
+    <div class="wallet">
+      <img class="w-25" src="img/50rub.jpg" alt="" cost="50">
+      <img class="w-25" src="img/100rub.jpg" alt="" cost="100">
+      <img class="w-25" src="img/500rub.jpg" alt="" cost="500">
+    </div>
     <a href="http://msskiv.beget.tech">Назад</a>
 
     <!-- Optional JavaScript -->

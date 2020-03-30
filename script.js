@@ -89,8 +89,8 @@ function takeMoney(event){
   event.preventDefault();
   
   let bill = this;//возвращает элемент
-  let billCost = bill.getAttribute("cost");//возвращает значение атрибута cost
-  console.log(billCost);
+  
+  //console.log(billCost);
   
   bill.style.position = "absolute";
   //let degRand = randomInteger(3, 10);
@@ -116,7 +116,112 @@ function takeMoney(event){
 
 function dropMoney(){
   window.onmousemove = null;
+  
+  let bill = this;//возвращает элемент
+  let billCost = bill.getAttribute("cost");//возвращает значение атрибута cost
+  if (inAtm(this)){
+    balance.value = +balance.value + +billCost;
+    bill.remove();
+  }
 }
+
+function inAtm(bill){
+  let billCoord = bill.getBoundingClientRect();
+  let atm = document.querySelector(".atm");
+  let atmCoord = atm.getBoundingClientRect();
+  
+  let billLeftTopCornerX = billCoord.x;
+  let billLeftTopCornerY = billCoord.y;
+  
+  let billRightTopCornerX = billCoord.x + billCoord.width;
+  let billRightTopCornerY = billCoord.y;
+  
+  let atmLeftTopCornerX = atmCoord.x;
+  let atmLeftTopCornerY = atmCoord.y;
+  
+  let atmRightTopCornerX = atmCoord.x + atmCoord.width;
+  let atmRightTopCornerY = atmCoord.y; 
+  
+  let atmLeftBottomCornerX = atmCoord.x;
+  let atmLeftBottomCornerY = atmCoord.x + atmCoord.height/3;
+  
+  let atmRightBottomCornerX = atmCoord.x + atmCoord.width;
+  let atmRightBottomCornerY = atmCoord.x + atmCoord.height/3;
+  
+  /*console.log(
+              [
+                [billLeftTopCornerX, billLeftTopCornerY] , [billRightTopCornerX, billRightTopCornerY]
+              ],
+              [
+                [atmLeftTopCornerX, atmLeftTopCornerY] , [atmRightTopCornerX, atmRightTopCornerY],
+                [atmLeftBottomCornerX, atmLeftBottomCornerY] , [atmRightBottomCornerX, atmRightBottomCornerY],
+              ]
+              )*/
+
+  if (
+    billLeftTopCornerX >= atmLeftTopCornerX
+    && billLeftTopCornerY >= atmLeftTopCornerY
+    && billRightTopCornerX <= atmRightTopCornerX
+    && billRightTopCornerY >= atmRightTopCornerY
+    
+    && billLeftTopCornerX >= atmLeftBottomCornerX
+    && billLeftTopCornerY <= atmLeftBottomCornerY
+  ){
+   return true;
+  }else{
+   return false;
+  }
+    
+}
+
+//------------------------сдача----------
+let changeBtn = document.querySelector(".change");
+changeBtn.onclick = takeChange;
+
+function takeChange(){
+  //alert("Сдача!");
+  tossCoin("10");
+}
+function tossCoin(cost) {
+  let changeContainer = document.querySelector(".change-box");
+  let changeContainerCoords = changeContainer.getBoundingClientRect();
+  let coinSrc = "";
+  switch (cost){
+    case "10":
+      coinSrc = "img/10rub.png";
+      break;
+    case "5":
+      coinSrc = "img/5rub.png";
+      break;
+    case "2":
+      coinSrc = "img/2rub.png";
+      break;
+    case "1":
+      coinSrc = "img/1rub.png";
+      break;
+  }
+  
+/*  changeContainer.innerHTML += `
+    <img src="${coinSrc}" style="height: 50px">
+  ` формирование монеток в контейнере сдачи. Это устаревший способ*/
+  
+  let coin = document.createElement("img");
+  coin.setAttribute("src", coinSrc);
+  coin.style.height = "50px";
+  coin.style.cursor = "pointer";
+  coin.style.display = "inline-block";
+  coin.style.position = "absolute";
+  
+  changeContainer.append(coin); //прикрепить после всех элементов. антоним - prepend. Вставляется внутрь контайнера
+  //changeContainer.after(coin);//после контейнера. перед - .before(coin)
+  //changeContainer.replace(coin);//заменяет элементы
+  coin.style.top = Math.round(Math.random() * (changeContainerCoords.height - 56)) + "px";
+  coin.style.left = Math.round(Math.random() * (changeContainerCoords.width - 56)) + "px";
+  
+  coin.onclick = () => coin.remove();
+  
+}
+
 
 
 
@@ -249,4 +354,4 @@ coffeeCup.addEventListener("click", buyCoffee, "Американо", 21)*/
   takeCoffee();
 }*/
 
-*/
+

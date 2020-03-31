@@ -112,6 +112,7 @@ function takeMoney(event){
   
   
   bill.onmouseup = dropMoney;
+  
 }
 
 function dropMoney(){
@@ -180,12 +181,48 @@ changeBtn.onclick = takeChange;
 
 function takeChange(){
   //alert("Сдача!");
-  tossCoin("10");
+  
+  if (balance.value <= 0) {
+    changeBtn.onclick = takeChange;//активируем кнопку сдачи
+    return;
+  }
+  changeBtn.onclick = null;//отключаем кнопку сдачи
+  if (balance.value - 10 >= 0) {
+    setTimeout(() => {
+      tossCoin("10");
+      balance.value -= 10;
+      return takeChange();
+    }, 500)
+      
+  }else if (balance.value - 5 >= 0){
+    setTimeout(() => {
+    tossCoin("5");
+    balance.value -= 5;
+    return takeChange();
+    }, 500)
+  }else if (balance.value - 2 >= 0){
+    setTimeout(() => {
+    tossCoin("2");
+    balance.value -= 2;
+    return takeChange();
+  }, 500)
+  }else if (balance.value - 1 >= 0){
+    setTimeout(() => {
+    tossCoin("1");
+    balance.value -= 1;
+    return takeChange();
+  }, 500)
+  }
+  
 }
+
 function tossCoin(cost) {
+  
   let changeContainer = document.querySelector(".change-box");
   let changeContainerCoords = changeContainer.getBoundingClientRect();
   let coinSrc = "";
+  let coinSound = new Audio("sound/coindrop.mp3");
+  coinSound.play();
   switch (cost){
     case "10":
       coinSrc = "img/10rub.png";
@@ -217,11 +254,13 @@ function tossCoin(cost) {
   //changeContainer.replace(coin);//заменяет элементы
   coin.style.top = Math.round(Math.random() * (changeContainerCoords.height - 56)) + "px";
   coin.style.left = Math.round(Math.random() * (changeContainerCoords.width - 56)) + "px";
+  let takeCoinSound = new Audio("sound/takecoin.mp3");
   
-  coin.onclick = () => coin.remove();
-  
+  coin.onclick = () => {
+    takeCoinSound.play(); //звук забирания монеты
+    coin.remove();//удаление монеты
+  }
 }
-
 
 
 
